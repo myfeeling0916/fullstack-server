@@ -12,5 +12,8 @@ module.exports = {
         client_secret: "aaaaaaaaaaaaaaaaaaaaaa",
         redirect_uris: ["http://localhost:5000/*"],
         javascript_origins: ["http://localhost:5000"]
+    },
+    mongoDB: {
+        mongoURI: "mongodb://<username>:<password>@ds123456.mlab.com:57233/databaseName"
     }
 };
