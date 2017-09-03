@@ -11,7 +11,8 @@ module.exports = {
             "https://www.googleapis.com/oauth2/v1/certs",
         client_secret: "aaaaaaaaaaaaaaaaaaaaaa",
         redirect_uris: ["http://localhost:5000/*"],
-        javascript_origins: ["http://localhost:5000"]
+        javascript_origins: ["http://localhost:5000"],
+        cookieKey: "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3" // SHA-256 hash
     },
     mongoDB: {
         mongoURI: "mongodb://<username>:<password>@ds123456.mlab.com:57233/databaseName"

@@ -4,9 +4,37 @@ const mongoose = require("mongoose");
 const keys = require("../config/keys");
 const User = mongoose.model("users");
 
+// https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize
+// used to serializeUser the user for the session.
+/*
+ *  passport.serializeUser(function(user, done) {
+        done(null, user.id);
+                    |
+    });             | 
+                    |
+                    |____________________> saved to session req.session.passport.user = {id:'..'}
+                                    |          
+    passport.deserializeUser(function(id, done) {
+                    ________________|
+                    | 
+        User.findById(id, function(err, user) {
+            done(err, user);
+                    |______________>user object attaches to the request as req.user
+
+        });
+    });
+*/
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
+
+// used to deserialize the user
+passport.deserializeUser((id, done) => {
+    User.findById(id).then(user => {
+        done(null, user);
+    });
+});
+
 passport.use(
     new GoogleStrategy(
         {
